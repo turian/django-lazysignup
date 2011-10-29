@@ -33,6 +33,10 @@ site's ``AUTHENTICATION_BACKENDS`` setting::
     'lazysignup.backends.LazySignupBackend',
   )
 
+If you are using django-email-login, also add the following setting::
+
+  EMAIL_LOGIN = True
+
 If you are using Django prior to 1.2, you should override the
 ``lazysignup/convert.html``  template to remove the ``{% csrf_token %}``
 template tag. This may be handled more elegantly in a future release.

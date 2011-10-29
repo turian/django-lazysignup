@@ -11,7 +11,13 @@ from django.contrib.auth import login
 
 from lazysignup.decorators import allow_lazy_user
 from lazysignup.exceptions import NotLazyError
-from lazysignup.forms import UserCreationForm
+try:
+    if settings.EMAIL_LOGIN:
+        from email_login.forms import EmailUserCreationForm as UserCreationForm
+    else:
+        from lazysignup.forms import UserCreationForm
+except:
+    from lazysignup.forms import UserCreationForm
 from lazysignup.models import LazyUser
 
 
